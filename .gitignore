@@ -139,3 +139,5 @@ stuff_i_dont_use/
 **/notebooks
 **/train_info
 **/__pycache__
+
+data/

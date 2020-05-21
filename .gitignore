@@ -129,5 +129,13 @@ dmypy.json
 .pyre/
 
 .DS_Store
+.ipynb_checkpoints
+.vscode
+
 *.mw
 stuff_i_dont_use/
+stuff_i_dont_use/
+**/results
+**/notebooks
+**/train_info
+**/__pycache__

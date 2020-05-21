@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="POSTPONE_SUITABLE_CONFIGURATIONS_SEARCH" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="switching_times" targetName="switching_times_2nd" />
+      <config projectName="switching_times" targetName="switching_times_1st" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="04c04b7b-7307-4ed9-9df7-53932c4cd690" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../notebooks/model_simulation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../notebooks/model_simulation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../results/sim_history/history_01-01-2013_2_days_seed_1234.npy" beforeDir="false" afterPath="$PROJECT_DIR$/../results/sim_history/history_01-01-2013_2_days_seed_1234.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../models/models.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1ZFbTJLsKXLapmOhtGbMMh8g15V" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ObjectiveC" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager" selected="CMake Application.switching_times_1st">
+    <configuration name="switching_times_1st" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="switching_times" TARGET_NAME="switching_times_1st" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="switching_times_2nd" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="switching_times" TARGET_NAME="switching_times_2nd" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.switching_times_1st" />
+      <item itemvalue="CMake Application.switching_times_2nd" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04c04b7b-7307-4ed9-9df7-53932c4cd690" name="Default Changelist" comment="" />
+      <created>1581704060829</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581704060829</updated>
+      <workItem from="1581704062496" duration="17267000" />
+      <workItem from="1582073911702" duration="13657000" />
+      <workItem from="1582213526764" duration="17496000" />
+      <workItem from="1583886796479" duration="5925000" />
+      <workItem from="1584437801618" duration="15774000" />
+      <workItem from="1584698113324" duration="4139000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1638" height="328" key="GridCell.Tab.0.bottom" timestamp="1584557618471">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="328" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1584454079888" />
+    <state width="1638" height="328" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1584557618471" />
+    <state width="1638" height="328" key="GridCell.Tab.0.center" timestamp="1584557618469">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="328" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1584454079884" />
+    <state width="1638" height="328" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1584557618469" />
+    <state width="1638" height="328" key="GridCell.Tab.0.left" timestamp="1584557618467">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="328" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1584454079877" />
+    <state width="1638" height="328" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1584557618467" />
+    <state width="1638" height="328" key="GridCell.Tab.0.right" timestamp="1584557618469">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="328" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1584454079886" />
+    <state width="1638" height="328" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1584557618469" />
+    <state x="341" y="175" width="1218" height="722" key="SettingsEditor" timestamp="1584702172180">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="341" y="175" width="1218" height="722" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1584702172180" />
+    <state x="517" y="372" key="com.intellij.ide.util.TipDialog" timestamp="1584698113312">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="517" y="357" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1584437801751" />
+    <state x="517" y="372" key="com.intellij.ide.util.TipDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1584698113312" />
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1584459361679">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="505" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1584459361679" />
+  </component>
+</project>

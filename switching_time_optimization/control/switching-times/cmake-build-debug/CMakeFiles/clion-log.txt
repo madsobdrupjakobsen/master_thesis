@@ -1,0 +1,5 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/CODE/switching_time_optimization/control/switching-times
+-- pybind11 v2.4.dev4
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/CODE/switching_time_optimization/control/switching-times/cmake-build-debug

@@ -1,0 +1,6 @@
+/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/CODE/switching_time_optimization/control/switching-times/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/CODE/switching_time_optimization/control/switching-times/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/CODE/switching_time_optimization/control/switching-times/cmake-build-debug/CMakeFiles/switching_times_2nd.dir
+/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/CODE/switching_time_optimization/control/switching-times/cmake-build-debug/CMakeFiles/switching_times_1st.dir
+/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/CODE/switching_time_optimization/control/switching-times/cmake-build-debug/pybind11/CMakeFiles/rebuild_cache.dir
+/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/CODE/switching_time_optimization/control/switching-times/cmake-build-debug/pybind11/CMakeFiles/edit_cache.dir

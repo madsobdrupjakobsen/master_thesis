@@ -128,9 +128,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-.DS_Store
-.ipynb_checkpoints
-.vscode
+**/.DS_Store
+**/.ipynb_checkpoints
+**/.vscode
 
 *.mw
 stuff_i_dont_use/

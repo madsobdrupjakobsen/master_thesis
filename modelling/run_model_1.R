@@ -1,4 +1,4 @@
-setwd("~/Dropbox/Skole/DTU/Studie/MASTER/CODE/modelling")
+setwd("~/Dropbox/Skole/DTU/Studie/MASTER/master_thesis/modelling")
 library('ctsmr')
 library(latex2exp)
 library(boot)

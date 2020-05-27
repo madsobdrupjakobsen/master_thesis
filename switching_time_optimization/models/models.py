@@ -150,6 +150,60 @@ class secondordermodel:
         #y = np.expand_dims(sigmoid(x[1],0.00778941,599.12794983), axis = 0)
         y = np.expand_dims(sigmoid(x[0],self.slope,self.offset), axis = 0)
         return y
+
+
+class secondordermodel_scaled: 
+    def __init__(self, pars,regime_slope=20.,smooth=False):
+        self.mu_IDLE = pars[0]
+        self.mu_MELT = pars[1]
+        self.omega_IDLE = pars[2]
+        self.omega_MELT = pars[3]
+        self.xi_IDLE = pars[4]
+        self.xi_MELT = pars[5]
+        self.slope = pars[6]
+        self.offset = pars[7]
+        self.sigma = pars[8]
+        self.R = pars[9]
+
+        self.drift_pars = np.array([pars[i] for i in range(8)])
+
+        self.pars = pars
+        self.regime_slope = regime_slope
+        self.smooth=smooth
+
+
+    def f_MELT(self,t,x):
+        dxdt = np.zeros(2)
+        dxdt[0] = x[1] / 889.190900140 
+        dxdt[1] = -2 * self.xi_MELT * self.omega_MELT * (x[1]) - self.omega_MELT**2 * (889.190900140 *x[0]-698.861205845*self.mu_MELT)
+
+        return dxdt
+
+    def f_IDLE(self,t,x):
+        dxdt = np.zeros(2)
+        dxdt[0] = x[1] / 889.190900140 
+        dxdt[1] = -2 * self.xi_IDLE * self.omega_IDLE * (x[1]) - self.omega_IDLE**2 * (889.190900140 *x[0]-961.996347735*self.mu_IDLE)
+
+        return dxdt
+
+    def f(self,t,x,switches):
+        regime = smooth_regime(t,switches,self.regime_slope)
+
+        if self.smooth:
+            f = regime * self.f_MELT(t,x) + (1-regime) * self.f_IDLE(t,x)
+        else:
+            if regime > 0.5:
+                f = self.f_MELT(t,x)
+            else:
+                f = self.f_IDLE(t,x)
+        
+        return(f)
+    
+    def h(self,x):
+        #y = x[1]
+        #y = np.expand_dims(sigmoid(x[1],0.00778941,599.12794983), axis = 0)
+        y = np.expand_dims(sigmoid(889.190900140*x[0],self.slope,592.010123492*self.offset), axis = 0)
+        return y
     
     
 class thirdordermodel: 

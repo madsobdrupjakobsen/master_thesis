@@ -733,9 +733,9 @@ def setupAxis(ax,scale=1,ncol_legend=1):
     #ax.rc('font', **{'size':str(int(30/scale))})
 
     # Show the major grid lines with dark grey lines
-    ax.legend(prop={'size': 20/scale},ncol=ncol_legend)
+    ax.legend(prop={'size': 30/scale},ncol=ncol_legend)
     ax.grid()
-    ax.grid(b=True, which='major', color='#666666', linestyle='-')
+    ax.grid(b=True, which='major', color='#666666', linestyle='-',alpha=0.4)
 
     # Show the minor grid lines with very faint and almost transparent grey lines
     ax.minorticks_on()
@@ -745,7 +745,7 @@ def setupAxis(ax,scale=1,ncol_legend=1):
 
     ax.set_ylabel(r'$123$', fontsize=40/scale)
 
-    ax.tick_params(axis="x", labelsize=20)
-    ax.tick_params(axis="y", labelsize=20)
+    ax.tick_params(axis="x", labelsize=30)
+    ax.tick_params(axis="y", labelsize=30)
     
     

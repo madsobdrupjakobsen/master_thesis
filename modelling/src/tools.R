@@ -33,9 +33,7 @@ finiteDiffHessian2 = function(optPars,r){
   npars = length(optPars)
   
   #h = optPars * h_rel #rep(h_rel,npars)
-  print((10^(-r))^(1/3))
-  h = (10^(-r))^(1/3) * (1. + abs(optPars))
-  print(h)
+  h = (10^(-r/3))* (1. + abs(optPars))
   
   
   # All non-diagonal elements
@@ -172,6 +170,38 @@ insert_xm <- function(fit, xm){
   names(fit$xm) <- names(xm)
   fit$xm <- fit$xm[fit$model$pars]
   return(fit)
+}
+
+buildModels = function(model_func){
+  # Construct a model with initial values
+  mod_man = model_func
+  setprm(mod_man)
+  fit_manual <- list()
+  fit_manual$model <- mod_man
+  fit_manual$xm <- mod_man$ParameterValues$initial
+  names(fit_manual$xm) = row.names(mod_man$ParameterValues)
+  
+  
+  ##-----------------------------------------------------------------
+  # Prepare model for nlminb
+  model = model_func
+  setprm(model)
+  ## Fit with nlminb
+  model$AnalyseModel()
+  ## Make a fit object to pass to simulate.ctsmr
+  fit <- list()
+  fit$model <- model
+  fit$xm <- model$ParameterValues$initial
+  fit$lower <- model$ParameterValues$lower
+  fit$upper <- model$ParameterValues$upper
+  names(fit$xm) <- row.names(model$ParameterValues)
+  names(fit$lower) <- row.names(model$ParameterValues)
+  names(fit$upper) <- row.names(model$ParameterValues)
+  ## Can be nessary such that xm has the right length
+  class(fit) <- "ctsmr"
+  ##-----------------------------------------------------------------
+  
+  return(list(fit=fit, model = model, mod_man=mod_man))
 }
 
 cols.blue = rgb(0, 0.4470, 0.7410)

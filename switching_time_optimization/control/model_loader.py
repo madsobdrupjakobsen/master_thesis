@@ -1,5 +1,5 @@
 import numpy as np
-from models import firstordermodel, secondordermodel, thirdordermodel
+from models import firstordermodel, secondordermodel, secondordermodel_scaled, thirdordermodel
 
 # First order model
 lambda_MELT = 0.077234
@@ -12,7 +12,7 @@ pars = np.array([lambda_MELT, mu_MELT, lambda_IDLE, mu_IDLE, np.exp(logsigma), n
 m1 = firstordermodel(pars)
 x0_1 = np.array([0.879327])
 
-# Second order - both
+# Second order - both - NLMINB
 mu_IDLE = 961.9963477
 mu_MELT = 698.8612058
 omega_IDLE = 0.0543021
@@ -27,6 +27,42 @@ logR =-9.9359985
 pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
 m2_both = secondordermodel(pars)
 x0_2_both = np.array([889.1909001, -2.0686304])
+
+# Second order - both - CTSMR
+mu_IDLE = 692.80388228
+mu_MELT = 571.21642534
+omega_IDLE = 0.06247610 
+omega_MELT =0.20686358 
+xi_IDLE = 0.50249192
+xi_MELT = 0.51699198
+slope = 0.01849967
+offset = 524.75178335
+logsigma = np.array([-7.52515120 , 0.35376150])
+logR =-10.22442105
+
+pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
+m2_both_ctsmr = secondordermodel(pars)
+x0_2_both_ctsmr = np.array([642.57154115, 2.47069021])
+
+
+# Second order - NLMIB - scaled
+mu_IDLE = 0.999999999
+mu_MELT = 1.000000000
+omega_IDLE = 0.054302066
+omega_MELT = 0.199631822
+xi_IDLE = 0.131779060
+xi_MELT = 0.613668062 
+slope = 0.007308264
+offset = 1.000000013
+logsigma = np.array([2.720712912 * (1-np.log(889.190900140)/2.720712912) , -0.501648509])
+logR =-9.935998459
+
+pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
+m2_both_scaled = secondordermodel_scaled(pars)
+x0_2_both_scaled = np.array([1.001124600, -2.068630356])
+
+
+
 
 # Second order - first
 mu_IDLE = 689.980557

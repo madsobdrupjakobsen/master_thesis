@@ -28,7 +28,7 @@ diagtool <- function(residuals){
   plot(pacf , cex.lab = 1.5 , cex.axis = 1.5)
 }
 
-finiteDiffHessian2 = function(optPars,r){
+finiteDiffHessian2 = function(optPars,fit,r){
   #browser()
   npars = length(optPars)
   

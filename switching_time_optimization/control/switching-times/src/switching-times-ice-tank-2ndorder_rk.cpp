@@ -41,16 +41,16 @@ namespace SwitchingTimes {
         /*
          * Compute consumption dynamics
          */
-        dxdt(0) =  x(1);
+        dxdt(0) =  x(1) / 889.190900140 ;
 
-        dxdt(1) = model_regime * (-2 * p_const(5) * p_const(3) * (x(1)) - p_const(3)*p_const(3) * (x(0)-p_const(1))) +
-                           (1-model_regime)*(-2 * p_const(4) * p_const(2) * (x(1)) - p_const(2)*p_const(2) * (x(0)-p_const(0)));          // Process dynamic
+        dxdt(1) = model_regime * (-2 * p_const(5) * p_const(3) * (x(1)) - p_const(3)*p_const(3) * (889.190900140*x(0)-698.861205845*p_const(1))) +
+                           (1-model_regime)*(-2 * p_const(4) * p_const(2) * (x(1)) - p_const(2)*p_const(2) * (889.190900140*x(0)-961.996347735*p_const(0)));          // Process dynamic
         
-        dxdt(2) =    (p_const(8) * 1./(1. + cexp(-(p_const(6) * (x(0) - p_const(7))),15)) +  // Divide by 1000 to get into [0,1]
+        dxdt(2) =    (p_const(8) * 1./(1. + cexp(-(p_const(6) * (889.190900140*x(0) - 592.010123492*p_const(7))),15)) +  // Divide by 1000 to get into [0,1]
                                     model_regime * p_const(9) + 
                                     (1-model_regime) * p_const(10)) * 1./60.;                         // Cost
 
-        dxdt(3) =  _price * (p_const(8) * 1./(1. + cexp(-(p_const(6) * (x(0) - p_const(7))),15)) +  // Divide by 1000 to get into [0,1]
+        dxdt(3) =  _price * (p_const(8) * 1./(1. + cexp(-(p_const(6) * (889.190900140*x(0) - 592.010123492*p_const(7))),15)) +  // Divide by 1000 to get into [0,1]
                                     model_regime * p_const(9) + 
                                     (1-model_regime) * p_const(10)) * 1./60.; 
     };

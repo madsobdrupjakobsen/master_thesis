@@ -1,10 +1,8 @@
 setprm <- function(model) {
   ## Init state
   model$setParameter(  T0 = c(init=0.88999901      ,lb=-10     ,ub=25 ) )
-  #model$setParameter(  T2 = c(init=600 ,lb=-10     ,ub=2500 ) )
   model$setParameter(  T1 = c(init=0.02016795 ,lb=-10     ,ub=2500 ) )
   model$setParameter(  T2 = c(init=-0.03208873 ,lb=-10     ,ub=25 ) )
-  #model$setParameter(  Tout = c(init=0.2 ,lb=-20     ,ub=25 ) )
   
   ## Set the initial value for the optimization
   model$setParameter(  a0_1 = c(init=2.537604   ,lb=-20  ,ub=50 ) )
@@ -27,11 +25,6 @@ setprm <- function(model) {
   
   model$setParameter(  slope = c(init=5, lb=0.1   ,ub=100))
   model$setParameter(  offset = c(init=0.6, lb=0, ub=100))
-  ## Constant, the thermostatic set temperature
-  #model$setParameter(  Tset = c(init=5))
-  ## From data report p. 23
-  ##60.95+1862.09+713.56+732.93+424.31+451.85+425.92+573.94+778.77
-  #model$setParameter(  sigmoidSlope = c(init=3, lb=0.1   ,ub=100.0)) # The slope parameter of the Sigmoid function tur
   ##-----------------------------------------------------------------
   invisible(model)
 }

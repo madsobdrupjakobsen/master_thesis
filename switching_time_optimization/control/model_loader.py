@@ -64,7 +64,7 @@ x0_2_both_scaled = np.array([1.001124600, -2.068630356])
 
 
 
-# Second order - first
+""" # Second order - first
 mu_IDLE = 689.980557
 mu_MELT = 579.448947
 omega_IDLE = 0.050398
@@ -78,9 +78,9 @@ logR =-9.921732
 
 pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
 m2_first = secondordermodel(pars)
-x0_2_first = np.array([664.112676, -1.143137])
+x0_2_first = np.array([664.112676, -1.143137]) """
 
-# Second order - second ctsmr
+""" # Second order - second ctsmr
 mu_IDLE = 695.444864
 mu_MELT = 573.927181
 omega_IDLE = 0.062476
@@ -94,9 +94,9 @@ logR =-10.224420
 
 pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
 m2_second_ctsmr = secondordermodel(pars)
-x0_2_second_ctsmr= np.array([645.241334, 2.469267])
+x0_2_second_ctsmr= np.array([645.241334, 2.469267]) """
 
-# Second order - second nlminb
+""" # Second order - second nlminb
 mu_IDLE = 981.1224368
 mu_MELT = 701.2119410
 omega_IDLE =  0.0624759 
@@ -110,11 +110,11 @@ logR =-10.2244098
 
 pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
 m2_second_nlminb = secondordermodel(pars)
-x0_2_second_nlminb = np.array([865.4797506, 5.6877789])
+x0_2_second_nlminb = np.array([865.4797506, 5.6877789]) """
 
 # Second order model - used
-m2 = m2_both
-x0_2 = x0_2_both
+m2 = m2_both_scaled
+x0_2 = x0_2_both_scaled
 
 '''
 T00      0.764273         NA      NA       NA

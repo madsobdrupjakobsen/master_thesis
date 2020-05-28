@@ -1,1 +1,0 @@
-/usr/local/bin/g++-9  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/SwitchingTimes.dir/main.cpp.o CMakeFiles/SwitchingTimes.dir/src/switching-times.cpp.o CMakeFiles/SwitchingTimes.dir/src/switching-times-example.cpp.o  -o SwitchingTimes  -L/usr/local/lib 

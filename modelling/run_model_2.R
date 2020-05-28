@@ -104,11 +104,13 @@ cbind(fitnlminb_scaled$par, hessObjNlminb$sd, hessObjNlminb$pvals)
 
 # Confidence intervals - ctmsr
 c(exp(fitctsmr_scaled$xm['p11']),exp(fitctsmr_scaled$xm['p11'] +  c(-1,1) * fitctsmr_scaled$sd['p11']))
+c(exp(fitctsmr_scaled$xm['p22']),exp(fitctsmr_scaled$xm['p22'] +  c(-1,1) * fitctsmr_scaled$sd['p22']))
 c(exp(fitctsmr_scaled$xm['e11']),exp(fitctsmr_scaled$xm['e11'] +  c(-1,1) * fitctsmr_scaled$sd['e11']))
 sqrt(c(exp(fitctsmr_scaled$xm['e11']),exp(fitctsmr_scaled$xm['e11'] +  c(-1,1) * fitctsmr_scaled$sd['e11'])))
 
 # Confidence intervals - nlminb
 c(exp(fitnlminb_scaled$par['p11']) ,exp(fitnlminb_scaled$par['p11'] +  c(-1,1) * hessObjNlminb$sd['p11']))
+c(exp(fitnlminb_scaled$par['p22']) ,exp(fitnlminb_scaled$par['p22'] +  c(-1,1) * hessObjNlminb$sd['p22']))
 c(exp(fitnlminb_scaled$par['e11']) ,exp(fitnlminb_scaled$par['e11'] +  c(-1,1) * hessObjNlminb$sd['e11']))
 sqrt(c(exp(fitnlminb_scaled$par['e11']) ,exp(fitnlminb_scaled$par['e11'] +  c(-1,1) * hessObjNlminb$sd['e11'])))
 
@@ -268,3 +270,4 @@ abline(0,0,col="gray")
 lines(c(0,lags), c(1,val), type="h")
 ## Draw the approximate 95% confidence interval
 abline(h=quantile(iidVal,0.95), col="blue", lty=2)
+

@@ -175,7 +175,7 @@ class secondordermodel_scaled:
     def f_MELT(self,t,x):
         dxdt = np.zeros(2)
         dxdt[0] = x[1] / 889.190900140 
-        dxdt[1] = -2 * self.xi_MELT * self.omega_MELT * (x[1]) - self.omega_MELT**2 * (889.190900140 *x[0]-698.861205845*self.mu_MELT)
+        dxdt[1] = -2 * self.xi_MELT * self.omega_MELT * (x[1]) - self.omega_MELT**2 * (889.190900140*x[0]-698.861205845*self.mu_MELT)
 
         return dxdt
 

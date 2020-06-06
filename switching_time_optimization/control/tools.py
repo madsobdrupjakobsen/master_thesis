@@ -534,7 +534,7 @@ def makeANNFeasible(pred_switch,redundant_tolerance = 10):
         
         return filtered_switch
 
-def predict_switch_ann(model,input,switch_type):
+def predict_switch_ann_rk(model,input,switch_type):
     
     model.load_state_dict(torch.load('./trained_networks/best_model_rk_switchtype_' + switch_type))
     model.eval()
@@ -546,6 +546,21 @@ def predict_switch_ann(model,input,switch_type):
     switches = np.concatenate(derive_regimes(switches_conological,2*1440,0))
     
     return switches
+
+def predict_switch_ann_og(model,input):
+    
+    #model.load_state_dict(torch.load('./trained_networks/best_model_rk_switchtype_' + switch_type))
+    #model.eval()
+
+    # Convert predictions to actual switches
+    output = model(torch.tensor(input).float())
+    switches_conological = np.array(output.data[0])
+
+    switches = np.concatenate(derive_regimes(switches_conological,2*1440,0))
+    
+    return switches
+
+
 
 def build_initial_ipopt_object(tank, tank_pars, dt, k, k_MELT, k_IDLE, t0, tf_ph, max_melt, n_s, price_slope, regime_slope,opt_rk):
     
@@ -727,13 +742,14 @@ def constraintASparse(n_s):
     
     return A
 
-def setupAxis(ax,scale=1,ncol_legend=1):
+def setupAxis(ax,scale=1,ncol_legend=1,nolegend=False):
     
     #ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
     #ax.rc('font', **{'size':str(int(30/scale))})
 
     # Show the major grid lines with dark grey lines
-    ax.legend(prop={'size': 30/scale},ncol=ncol_legend)
+    if not nolegend:
+        ax.legend(prop={'size': 30/scale},ncol=ncol_legend)
     ax.grid()
     ax.grid(b=True, which='major', color='#666666', linestyle='-',alpha=0.4)
 

@@ -61,7 +61,7 @@ namespace SwitchingTimes {
                                     model_regime * p_const(9) + 
                                     (1-model_regime) * p_const(10)) * 1./60.;                         // Cost
 
-        dxdt(2) = _price * (p_const(8) * 1./(1. + cexp(-(slope * (889.190900140*x(0) - 592.010123492*offset)),15)) +  // Divide by 1000 to get into [0,1]
+        dxdt(3) = _price * (p_const(8) * 1./(1. + cexp(-(slope * (889.190900140*x(0) - 592.010123492*offset)),15)) +  // Divide by 1000 to get into [0,1]
                                     model_regime * p_const(9) + 
                                     (1-model_regime) * p_const(10)) * 1./60.; 
     };

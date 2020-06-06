@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import torch
 from matplotlib import rc
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from torch import nn, optim
 from torch.autograd import Variable
 from torch.optim import lr_scheduler

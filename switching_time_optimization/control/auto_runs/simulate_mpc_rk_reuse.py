@@ -196,7 +196,7 @@ tank.set_p_optimize(switch0)
 # SIMUALTE
 #n_days = 2
 n_skip = 2 #int(1/ och_sim)
-start_date = '2018-01-01 12:00:00'
+start_date = '2019-01-01 12:00:00'
 dt_stoch_sim = 0.1
 seed = 1235
 
@@ -296,7 +296,7 @@ start_expected = np.array(x0_model)
 idx_offset = np.where(prices.index == start_date)[0][0]
 
 # Load history
-filename = '../results/sim_history/rk_history_(2018-01-01 12:00:00)_(100_days)' + '_(price_slope_' + str(price_slope) +  ')_(regime_slope_' + str(regime_slope) +  ')_(seed_1235)_(n_s_' + str(n_s) + ')_(sys_model_' + sys_mod + ')_(sys_true_m3).npy'
+filename = '../results/sim_history/rk_history_(2019-01-01 12:00:00)_(100_days)' + '_(price_slope_' + str(price_slope) +  ')_(regime_slope_' + str(regime_slope) +  ')_(seed_1235)_(n_s_' + str(n_s) + ')_(sys_model_' + sys_mod + ')_(sys_true_m3).npy'
 histories = np.load(filename,allow_pickle=True).item()
 
 

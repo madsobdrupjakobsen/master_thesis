@@ -60,7 +60,18 @@ hessObjCtsmr = finiteDiffHessian2(fitctsmr$xm,r = 16)
 
 fitnlminb
 
+# Confidence intervals - ctmsr
+c(exp(fitctsmr$xm['p11']),exp(fitctsmr$xm['p11'] +  c(-1,1) * fitctsmr$sd['p11']))
+c(exp(fitctsmr$xm['p22']),exp(fitctsmr$xm['p22'] +  c(-1,1) * fitctsmr$sd['p22']))
+c(exp(fitctsmr$xm['p33']),exp(fitctsmr$xm['p33'] +  c(-1,1) * fitctsmr$sd['p33']))
+c(exp(fitctsmr$xm['e11']),exp(fitctsmr$xm['e11'] +  c(-1,1) * fitctsmr$sd['e11']))
+sqrt(c(exp(fitctsmr$xm['e11']),exp(fitctsmr$xm['e11'] +  c(-1,1) * fitctsmr$sd['e11'])))
 
+exp(fitnlminb$par['p11'])
+exp(fitnlminb$par['p22'])
+exp(fitnlminb$par['p33'])
+exp(fitnlminb$par['e11'])
+sqrt(exp(fitnlminb$par['e11']))
 ##-----------------------------------------------------------------
 ## EVALUATE MODELS
 ## -------------- -------------- -------------- --------------
@@ -94,7 +105,7 @@ lines(simNlminStoch$output$CompCap,type = "l", col = 'green')
 
 #### RESIDUAL ANALYSIS
 res = ice_data$CompCap - simNlminb$output$sim$CompCap
-plot(res)
+plot(res, type = "l")
 diagtool(res)
 
 plot(ice_data$CompCap,res)

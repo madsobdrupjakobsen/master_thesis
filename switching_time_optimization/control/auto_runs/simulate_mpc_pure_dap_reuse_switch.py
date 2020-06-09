@@ -183,8 +183,8 @@ tank.set_p_optimize(switch0)
 #%%
 # SIMUALTE
 #n_days = 2
-n_skip = 20 #int(1/ och_sim)
-start_date = '2019-01-01 12:00:00'
+n_skip = 2 #int(1/ och_sim)
+start_date = '2018-01-01 12:00:00'
 dt_stoch_sim = 0.1
 seed = 1235
 
@@ -262,7 +262,7 @@ start_promised = np.array(x0_model)
 idx_offset = np.where(prices.index == start_date)[0][0]
 
 # Load history
-filename = '../results/sim_history/og_history_(2019-01-01 12:00:00)_(100_days)' + '_(price_slope_' + str(price_slope) +  ')_(regime_slope_' + str(regime_slope) +  ')_(seed_1235)_(n_s_' + str(n_s) + ')_(sys_model_' + sys_mod + ')_(sys_true_m3).npy'
+filename = '../results/sim_history/og_history_(2018-01-01 12:00:00)_(' + str(n_days) + '_days)' + '_(price_slope_' + str(price_slope) +  ')_(regime_slope_' + str(regime_slope) +  ')_(seed_1235)_(n_s_' + str(n_s) + ')_(sys_model_' + sys_mod + ')_(sys_true_m3).npy'
 histories = np.load(filename,allow_pickle=True).item()
 
 
@@ -280,6 +280,7 @@ for day in range(n_days):
     idx_offset = np.where(prices.index == start_date)[0][0]
     idx = np.arange(48) + day * 24 + idx_offset
     q_dap = np.array(prices['spot'][idx]).astype(np.float) # * 1/1000000
+    q_rk = np.array(prices['RK'][idx]).astype(np.float) # * 1/1000000
     
     # Insert new prices in optimization object
     p_dynamic = tank.get_p_dynamic()
@@ -363,10 +364,10 @@ for day in range(n_days):
         cons_momental_promised, cons_acc_promised = consumption(Z_promised[0],T_tmp,switch_promised,k_baseline,k_MELT,k_IDLE)
 
         # Compute payed prices
-        price_payed = 1/1000000 *( cons_acc_true * q_dap[hour])
-        price_payed_init_switch = 1/1000000 *( cons_acc_true_init_switch * q_dap[hour])
-        price_payed_idle = 1/1000000 *( cons_acc_true_idle * q_dap[hour])
-        price_promised = 1/1000000 *( cons_acc_promised * q_dap[hour])
+        price_payed = 1/1000000 * (cons_acc_promised * q_dap[hour] + (cons_acc_true - cons_acc_promised) * q_rk[hour])
+        price_payed_init_switch = 1/1000000 * (cons_acc_true_init_switch * q_dap[hour])
+        price_payed_idle = 1/1000000 * (cons_acc_true_idle * q_dap[hour])
+        price_promised = 1/1000000 * (cons_acc_promised * q_dap[hour])
 
 
         # -----------------------------
@@ -435,7 +436,7 @@ for day in range(n_days):
 
     history['end_date'] = prices.index[idx[-1]]
 
-    filenname = '../results/sim_history/og_history_reuse(' + start_date + ')_(' + str(n_days) + '_days)' + '_(price_slope_' + str(price_slope) +  ')_(regime_slope_' + str(regime_slope) +  ')_(seed_' + str(seed) +  ')_(n_s_' + str(n_s) + ')_(sys_model_' +  sys_mod + ')_(sys_true_' + sys_true + ')' +  '.npy'
+    filenname = '../results/sim_history/og_history_reuse_(' + start_date + ')_(' + str(n_days) + '_days)' + '_(price_slope_' + str(price_slope) +  ')_(regime_slope_' + str(regime_slope) +  ')_(seed_' + str(seed) +  ')_(n_s_' + str(n_s) + ')_(sys_model_' +  sys_mod + ')_(sys_true_' + sys_true + ')' +  '.npy'
     np.save(filenname,history)
 
 

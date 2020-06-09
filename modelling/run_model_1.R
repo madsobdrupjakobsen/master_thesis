@@ -5,6 +5,8 @@ library(boot)
 source('./src/tools.R')
 source("./src/yum_tools.R")
 source('./src/prep.R')
+source('./src/ldf.R')
+source('./src/leaveOneOut.R')
 
 ##-----------------------------------------------------------------
 # MODEL 1
@@ -125,4 +127,15 @@ res = ice_data$CompCap - simNlminb$output$sim$CompCap
 plot(res)
 diagtool(res)
 
+lags = seq(1,20)
+ldf_vals = ldf(res,lags,nBoot=30,plotIt=FALSE,plotFits=TRUE)
+val = ldf_vals$val
+iidVal = ldf_vals$iidVal
+
+plot(c(0,lags), c(1,val), type="n", ylim=c(-1,1), ylab="LDF", main="Lag Dependence Functions", xaxt="n", xlab="lag")
+axis(1,c(0,lags))
+abline(0,0,col="gray")
+lines(c(0,lags), c(1,val), type="h")
+## Draw the approximate 95% confidence interval
+abline(h=quantile(iidVal,0.95), col="blue", lty=2)
 

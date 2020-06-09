@@ -181,7 +181,7 @@ tank.set_p_optimize(switch0)
 #%%
 # SIMUALTE
 #n_days = 2
-n_skip = 20 #int(1/ och_sim)
+n_skip = 2 #int(1/ och_sim)
 start_date = '2019-01-01 12:00:00'
 dt_stoch_sim = 0.1
 seed = 1235

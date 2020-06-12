@@ -30,13 +30,6 @@ from tools import stochasticSimulation, derive_regimes, discrete_ivp_solver, \
                     consumption, stochasticSimulation_IDLE, removeRedundantSwitches
 
 
-
-#%load_ext autoreload
-#%autoreload 2
-
-# PATHS
-#FIGS = '/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/THESIS/FIGS'
-
 import os
 import numpy as np
 import random
@@ -74,8 +67,6 @@ from tools import stochasticSimulation, derive_regimes, discrete_ivp_solver, \
 from model_loader import *
 from price_loader import *
 
-# PATHS
-#FIGS = '/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/THESIS/FIGS'
 
 # Switching time optimization modules
 import switching_times_1st as st1
@@ -92,6 +83,7 @@ true_sys = int(sys.argv[4])
 price_slope = float(sys.argv[5])
 regime_slope = float(sys.argv[6])
 
+start_date = '2018-01-01 12:00:00'
 
 k_baseline = 12400.
 k_MELT = 250.
@@ -113,7 +105,6 @@ logfile.close()
 
 # BUILD OPTIMIZATION FUNCTION
 # Define parameters
-#n_s = 6
 max_melt = 16. * 60.
 dt_opt = 0.1
 
@@ -184,7 +175,6 @@ tank.set_p_optimize(switch0)
 # SIMUALTE
 #n_days = 2
 n_skip = 2 #int(1/ och_sim)
-start_date = '2019-01-01 12:00:00'
 dt_stoch_sim = 0.1
 seed = 1235
 
@@ -262,7 +252,7 @@ start_promised = np.array(x0_model)
 idx_offset = np.where(prices.index == start_date)[0][0]
 
 # Load history
-filename = '../results/sim_history/og_history_(2019-01-01 12:00:00)_(' + str(n_days) + '_days)' + '_(price_slope_' + str(price_slope) +  ')_(regime_slope_' + str(regime_slope) +  ')_(seed_1235)_(n_s_' + str(n_s) + ')_(sys_model_' + sys_mod + ')_(sys_true_m3).npy'
+filename = '../results/sim_history/og_history_(2018-01-01 12:00:00)_(' + str(n_days) + '_days)' + '_(price_slope_' + str(price_slope) +  ')_(regime_slope_' + str(regime_slope) +  ')_(seed_1235)_(n_s_' + str(n_s) + ')_(sys_model_' + sys_mod + ')_(sys_true_m3).npy'
 histories = np.load(filename,allow_pickle=True).item()
 
 

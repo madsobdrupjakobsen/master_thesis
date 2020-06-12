@@ -74,8 +74,6 @@ from tools import stochasticSimulation, derive_regimes, discrete_ivp_solver, \
 from model_loader import *
 from price_loader import *
 
-# PATHS
-#FIGS = '/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/THESIS/FIGS'
 
 # Switching time optimization modules
 import switching_times_1st as st1
@@ -96,6 +94,8 @@ regime_slope = float(sys.argv[6])
 k_baseline = 12400.
 k_MELT = 250.
 k_IDLE = 9.
+
+start_date = '2018-01-01 12:00:00'
 
 
 
@@ -182,7 +182,6 @@ tank.set_p_optimize(switch0)
 # SIMUALTE
 #n_days = 2
 n_skip = 2 #int(1/ och_sim)
-start_date = '2019-01-01 12:00:00'
 dt_stoch_sim = 0.1
 seed = 1235
 

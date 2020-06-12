@@ -74,8 +74,6 @@ from tools import stochasticSimulation, derive_regimes, discrete_ivp_solver, \
 from model_loader import *
 from price_loader import *
 
-# PATHS
-#FIGS = '/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/THESIS/FIGS'
 
 # Switching time optimization modules
 import switching_times_1st as st1
@@ -92,21 +90,7 @@ k_baseline = 12400.
 k_MELT = 250.
 k_IDLE = 9.
 
-# Define model
-#mu_IDLE = 0.929224978
-#mu_MELT = 0.683920449 
-#a0_IDLE = 0.023590616
-#a0_MELT = 0.019370754
-#a1_IDLE = 0.867249723  
-#a1_MELT = 0.151822292
-#a2_IDLE = 46.261177791   
-#a2_MELT = 1.206710500
-#slow = 0.318488737 
-#logsigma = np.array([-5.110433517, -18.493395485,  -5.116712113])
-#logR = -8.444535962
-
-#pars = np.array([mu_IDLE, mu_MELT, a0_IDLE, a0_MELT, a1_IDLE, a1_MELT, a2_IDLE, a2_MELT, slow, logsigma, logR])
-#m3 = thirdordermodel(pars)
+start_date = '2018-01-01 12:00:00'
 
 
 model_sys = int(sys.argv[1])
@@ -196,7 +180,7 @@ tank.set_p_optimize(switch0)
 # SIMUALTE
 #n_days = 2
 n_skip = 2 #int(1/ och_sim)
-start_date = '2018-01-01 12:00:00'
+
 dt_stoch_sim = 0.1
 seed = 1235
 
@@ -338,15 +322,6 @@ for day in range(n_days):
     opt_switch = tank.get_p_optimize_ipopt()
     switch_promised = opt_switch[:2*n_s]
     switch_used = opt_switch[2*n_s:]
-    
-    
-    #switch_opt_dap = np.sort(np.random.uniform(0,tf_ph,2*n_s))
-    #switch_promised = np.concatenate(derive_regimes(switch_opt_dap,0,0))
-    #print(switch_opt_dap)
-
-    #switch_opt_rk = np.sort(np.random.uniform(0,tf_ph,2*n_s))
-    #switch_used = np.concatenate(derive_regimes(switch_opt_rk,0,0))
-    #print(switch_opt_rk)
     
     
     # Simulate process and compute prices

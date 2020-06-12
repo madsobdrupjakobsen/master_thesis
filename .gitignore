@@ -136,7 +136,7 @@ dmypy.json
 stuff_i_dont_use/
 stuff_i_dont_use/
 **/results
-**/notebooks
+**/notebooks_all
 **/train_info
 **/__pycache__
 

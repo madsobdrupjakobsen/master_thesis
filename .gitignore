@@ -129,6 +129,8 @@ dmypy.json
 .pyre/
 
 **/.DS_Store
+**/.RHistory
+**/.RData
 **/.ipynb_checkpoints
 **/.vscode
 

@@ -1,4 +1,6 @@
-
+import numpy as np
+import seaborn as sns
+FIGS = '/Users/madsobdrup/Dropbox/Skole/DTU/Studie/MASTER/THESIS/FIGS'
 
 colors1 = ["#FFDB6D", "#C4961A", "#F4EDCA", "#D16103", "#C3D7A4", "#52854C", "#4E84C4", "#293352"]
 
@@ -38,13 +40,15 @@ orange = [(0.9971703191080353, 0.9183391003460207, 0.8395078815840061),
  (0.6083967704728951, 0.19538638985005768, 0.012856593617839307)]
 
 colors1 = ["#FFDB6D", "#C4961A", "#F4EDCA", "#D16103", "#C3D7A4", "#52854C", "#4E84C4", "#293352"]
+
+dark_red = (0.6922722029988467, 0.09227220299884642, 0.16770472895040373)
+
 nice_colors = ['#69b3a2']
 
 #plt.style.use('seaborn-dark-palette')
 
-import seaborn as sns
+
 sns.set(style='ticks', palette='Set2')
-sns.palplot(sns.color_palette("Paired"))
 sns.set(style='ticks', palette="Paired")
 
 
@@ -54,6 +58,10 @@ col_mod2 = colors1[4] #'C2'
 col_mod2_line = '#91ad64'
 col_mod3 = colors1[5] #'C6'
 col_idle = colors1[1]
+
+set20_light = '#90e5ca'
+set21_light = '#f7b096'
+np.array(sns.color_palette("Set2")[1]) * 255
 
 exp_line_style = (0, (5, 1))
 

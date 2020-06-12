@@ -1,6 +1,3 @@
-#source('~/Dropbox/Skole/DTU/Studie/MASTER/CODE/model/code/ldf.R')
-#source('~/Dropbox/Skole/DTU/Studie/MASTER/CODE/model/code/leaveOneOut.R')
-
 library(MASS)
 library(bdsmatrix)
 createMeltSteps = function(changeTimes,obsTimes){
@@ -108,11 +105,9 @@ finiteDiffHessian2 = function(optPars,fit,r){
 }
 
 finiteDiffHessian = function(optPars,r){
-  #browser()
   npars = length(optPars)
   
-  h = optPars * h_rel #rep(h_rel,npars)
-  #h = ((10^(-r))^(1/3))^(1/3) * (1. + abs(optPars))
+  h = optPars * h_rel
   print(h)
   
   f_zero = nllikelihood(optPars, fit, D=ice_data, firstorder=TRUE, c=3, n.ahead=1,printit=FALSE)
@@ -146,9 +141,7 @@ finiteDiffHessian = function(optPars,r){
     }
   }
   
-  H_sym = hess #1/2 * (hess + t(hess))
-  
-  #print(H_sym)
+  H_sym = 1/2 * (hess + t(hess))
   
   sd = sqrt(diag(solve(H_sym)))
   print(sd)

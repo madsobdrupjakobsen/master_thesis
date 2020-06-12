@@ -1,4 +1,6 @@
+# Set the working directory to the location of this file
 setwd("~/Dropbox/Skole/DTU/Studie/MASTER/master_thesis/modelling")
+
 library('ctsmr')
 library(latex2exp)
 library(boot)
@@ -106,8 +108,8 @@ lines(simNlminStoch$output$CompCap,type = "l", col = 'green')
 #### ESTIMATE UNCERTAINTY WITH FINITE DIFFERENCE
 summary(fitctsmr)
 
-hessObjNlminb = finiteDiffHessian2(fitnlminb$par,r = 15)
-hessObjCtsmr = finiteDiffHessian2(fitctsmr$xm,r=15)
+hessObjNlminb = finiteDiffHessian2(fitnlminb$par,fitNlminb,r = 15)
+hessObjCtsmr = finiteDiffHessian2(fitctsmr$xm,fitCtsmr,r=15)
 
 cbind(fitnlminb$par, hessObjNlminb$sd, hessObjNlminb$pvals)
 
@@ -128,7 +130,7 @@ plot(res)
 diagtool(res)
 
 lags = seq(1,20)
-ldf_vals = ldf(res,lags,nBoot=30,plotIt=FALSE,plotFits=TRUE)
+ldf_vals = ldf(res,lags,nBoot=30,plotIt=FALSE,plotFits=FALSE)
 val = ldf_vals$val
 iidVal = ldf_vals$iidVal
 

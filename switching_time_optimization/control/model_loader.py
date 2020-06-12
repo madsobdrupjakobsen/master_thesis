@@ -64,94 +64,12 @@ x0_2_both_scaled = np.array([1.001124600, -2.068630356])
 
 
 
-""" # Second order - first
-mu_IDLE = 689.980557
-mu_MELT = 579.448947
-omega_IDLE = 0.050398
-omega_MELT = 0.196751 
-xi_IDLE = 0.087644
-xi_MELT = 0.596060 
-slope = 0.016102
-offset = 528.908275
-logsigma = np.array([1.990430 , -999999])
-logR =-9.921732
-
-pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
-m2_first = secondordermodel(pars)
-x0_2_first = np.array([664.112676, -1.143137]) """
-
-""" # Second order - second ctsmr
-mu_IDLE = 695.444864
-mu_MELT = 573.927181
-omega_IDLE = 0.062476
-omega_MELT = 0.206864
-xi_IDLE = 0.502492
-xi_MELT =  0.516992 
-slope = 0.018510 
-offset = 527.489203
-logsigma = np.array([-99999, 0.353187])
-logR =-10.224420
-
-pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
-m2_second_ctsmr = secondordermodel(pars)
-x0_2_second_ctsmr= np.array([645.241334, 2.469267]) """
-
-""" # Second order - second nlminb
-mu_IDLE = 981.1224368
-mu_MELT = 701.2119410
-omega_IDLE =  0.0624759 
-omega_MELT = 0.2068639 
-xi_IDLE = 0.5024971 
-xi_MELT = 0.5169938
-slope = 0.0080359
-offset =594.2449282
-logsigma = np.array([-99999, 1.1875941])
-logR =-10.2244098
-
-pars = np.array([mu_IDLE, mu_MELT, omega_IDLE, omega_MELT, xi_IDLE, xi_MELT, slope, offset, np.exp(logsigma), np.exp(logR)])
-m2_second_nlminb = secondordermodel(pars)
-x0_2_second_nlminb = np.array([865.4797506, 5.6877789]) """
-
 # Second order model - used
 m2 = m2_both_scaled
 x0_2 = x0_2_both_scaled
 
-'''
-T00      0.764273         NA      NA       NA
-T10      0.065197         NA      NA       NA
-T20     -0.132599         NA      NA       NA
-a0_0     0.137103         NA      NA       NA
-a0_1    11.053499         NA      NA       NA
-a1_0     0.294471         NA      NA       NA
-a1_1     8.627593         NA      NA       NA
-a2_0     1.243450         NA      NA       NA
-a2_1     3.532068         NA      NA       NA
-e11    -10.977195         NA      NA       NA
-mu0      0.978603         NA      NA       NA
-mu1      0.374562         NA      NA       NA
-offset   0.152946         NA      NA       NA
-p11     -3.635138         NA      NA       NA
-p22    -11.418277         NA      NA       NA
-p33     -4.228776         NA      NA       NA
-slope    3.468666         NA      NA       NA
-slow     4.909405         NA      NA       NA
-'''
 
 # Third order model
-'''
-mu_IDLE = 0.929224978
-mu_MELT = 0.683920449 
-a0_IDLE = 0.023590616
-a0_MELT = 0.019370754
-a1_IDLE = 0.867249723  
-a1_MELT = 0.151822292
-a2_IDLE = 46.261177791   
-a2_MELT = 1.206710500
-slow = 0.318488737 
-
-logsigma = np.array([-5.110433517, -18.493395485,  -5.116712113])
-logR = -8.444535962
-'''
 
 # Define model - nlminb
 mu_IDLE = 0.978603
@@ -201,34 +119,3 @@ x0_3_ctsmr = np.array([0.4914763,  0.1570753,  -7.8600795])
 
 m3 = m3_nlminb
 x0_3 = x0_3_nlminb
-'''
-a0_0     0.0167358   0.0061738   2.7108 0.0075726 ** 
-a0_1     0.0463627   0.0220815   2.0996 0.0375916 *  
-a1_0     0.3411097   0.1697582   2.0094 0.0464550 *  
-a1_1     0.3264330   0.1642066   1.9879 0.0488058 *  
-a2_0    49.7535156   0.1904151 261.2898 < 2.2e-16 ***
-a2_1     2.4016786   1.3464798   1.7837 0.0766826 .  
-e11    -10.8960154   0.3771985 -28.8867 < 2.2e-16 ***
-mu0      0.6183479   0.2160731   2.8618 0.0048762 ** 
-mu1      0.2234170   0.0585640   3.8149 0.0002062 ***
-offset   0.0642175   0.0114054   5.6304 1.024e-07 ***
-p11     -4.2524933   0.4268121  -9.9634 < 2.2e-16 ***
-p22     -7.9162707   0.7001128 -11.3071 < 2.2e-16 ***
-p33     -4.4415517   0.6851678  -6.4824 1.666e-09 ***
-slope    4.9465409   2.0322216   2.4341 0.0162176 *  
-slow     0.2836255   0.0423370   6.6992 5.603e-10 ***
-'''
-
-
-# pars from jupyter
-""" mu_IDLE = 0.929224978
-mu_MELT = 0.683920449 
-a0_IDLE = 0.023590616
-a0_MELT = 0.019370754
-a1_IDLE = 0.867249723  
-a1_MELT = 0.151822292
-a2_IDLE = 40. #46.261177791   
-a2_MELT = 1.206710500
-slow = 0.318488737 
-logsigma = np.array([-5.110433517, -18.493395485,  -5.116712113])
-logR = -8.444535962 """

@@ -80,15 +80,7 @@ class firstordermodel:
     def f_wrt_x(self,t,x,switches):
         regime = smooth_regime(t,switches)
         
-        fdx = regime * (-self.lambda_IDLE) + (1-regime) * -self.lambda_MELT
-        #for i in range(tau_MELT.size-1):
-        #    if tau_MELT[i] <= t and t < tau_IDLE[i+1]: # Check if MELT
-        #        return(-self.lambda_IDLE)
-
-        #    elif tau_IDLE[i] <= t and t < tau_MELT[i]: # Check if IDLE
-        #        return(-self.lambda_IDLE)
-
-        # If last interval
+        fdx = regime * (-self.lambda_IDLE) + (1-regime) * -self.lambda_MEL
         return(fdx)
     
     def h(self,x):
@@ -201,7 +193,6 @@ class secondordermodel_scaled:
     
     def h(self,x):
         #y = x[1]
-        #y = np.expand_dims(sigmoid(x[1],0.00778941,599.12794983), axis = 0)
         y = np.expand_dims(sigmoid(889.190900140*x[0],self.slope,592.010123492*self.offset), axis = 0)
         return y
     
@@ -259,7 +250,5 @@ class thirdordermodel:
         return(f)
     
     def h(self,x):
-        #y = x[1]
-        #y = np.expand_dims(sigmoid(x[1],0.00778941,599.12794983), axis = 0)
         y = np.expand_dims(1./(1. + np.exp(-(self.slope * (x[0] - self.offset)))) , axis = 0)
         return y

@@ -283,18 +283,11 @@ namespace SwitchingTimes {
             for(int k = 0; k < _tmp - 1; ++k) { g[_tmp + k] = x[k + 1] - x[_tmp + k]; };
 
             // Total melt time
-            //g[2 * _tmp] = 0;
-            //for(int k = 0; k < (2 * _tmp); ++k) { g[2 * _tmp] += x[_tmp + k] - x[ k]; };
-
-            //g[_p_opt.size() - 1] = x[5] - x[0] + x[6] - x[1] + x[7] - x[2] + x[8] - x[3] + x[9] - x[4];
             g[_p_opt.size() - 1]  = 0.;
             int k = 0;
             for(int k = 0; k < _tmp; ++k) {
-                g[_p_opt.size() - 1] = g[_p_opt.size() - 1] + x[_tmp + k] - x[k] ; //+ x[6] - x[1] + x[7] - x[2] + x[8] - x[3] + x[9] - x[4];
+                g[_p_opt.size() - 1] = g[_p_opt.size() - 1] + x[_tmp + k] - x[k]; 
             }
-
-            
-            //for(int k = 0; k < _tmp; ++k) { g[_p_opt.size() - 1] += x[_tmp + k] - x[k]; };
 
             return true;
         };
@@ -330,21 +323,6 @@ namespace SwitchingTimes {
                     iRow[_count] = _p_opt.size()-1; jCol[_count] = k;
                     _count += 1;
                 };
-
-                // Max melt
-                /*
-                iRow[18] = 9; jCol[18] = 0;
-                iRow[19] = 9; jCol[19] = 1;
-                iRow[20] = 9; jCol[20] = 2;
-                iRow[21] = 9; jCol[21] = 3;
-                iRow[22] = 9; jCol[22] = 4;
-                iRow[23] = 9; jCol[23] = 5;
-                iRow[24] = 9; jCol[24] = 6;
-                iRow[25] = 9; jCol[25] = 7;
-                iRow[26] = 9; jCol[26] = 8;
-                iRow[27] = 9; jCol[27] = 9;
-                */
-
                 
             }
             else
@@ -363,21 +341,6 @@ namespace SwitchingTimes {
                     values[_count] = -1.;
                     _count += 1;
                 };
-
-                // Max melt 
-                /*               
-                values[18] = -1;
-                values[19] = -1;
-                values[20] = -1;
-                values[21] = -1;
-                values[22] = -1;
-                values[23] = 1;
-                values[24] = 1;
-                values[25] = 1;
-                values[26] = 1;
-                values[27] = 1;
-                */
-
                 
                 for(int k = 0; k < _tmp; ++k) {
                     values[_count] = -1;
@@ -477,7 +440,6 @@ namespace SwitchingTimes {
             
             // Solve NLP
             (*plant)._status_solve = (int) app->OptimizeTNLP(plant);
-            //(*plant)._status_solve = 999999;
         };
     };
 }

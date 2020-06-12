@@ -48,34 +48,8 @@ namespace SwitchingTimes {
     template <typename scalar>
     scalar Plant::objective(const vector<scalar> &x,
             const vector<scalar> &p_dynamic, const vector<scalar> &p_opt, const vector<double> &p_const) {
-
-        //size_t n_opt = p_opt.size() / 2;
-        //Eigen::Map<const vector<scalar>> on(p_opt.data(), n_opt);
-        //Eigen::Map<const vector<scalar>> off(p_opt.data() + n_opt, n_opt);
-
-        
-        //scalar infeasibility = 0.;
-        //scalar period_length = 0.;
-        //int _tmp = p_opt.size();
-        //for(int k = 0; k < n_opt; ++k) { // ON times
-        //    period_length = off(k) - on(k);
-        //    if (period_length <= 0){
-        //        infeasibility = infeasibility - period_length;
-        //    }
-        //};
-        //for(int k = 0; k < n_opt - 1; ++k) { // OFF times
-        //    period_length = on(k) - off(k);
-        //    if (period_length >= 0) {
-        //        infeasibility = infeasibility - period_length;
-        //    }
-        //}
-
-        //static_cast<double>(infeasibility(0))
-
-        //return (x(1) - infeasibility);
         
         return (x(1));
-        //return p_const(8);
     };
 
 /*

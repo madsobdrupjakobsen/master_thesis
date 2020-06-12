@@ -27,7 +27,7 @@ link_directories(${IPOPT_LIBRARY_DIRS})
 include_directories("./pybind11/include")
 add_subdirectory(pybind11)
 
-# ------- OG modules
+# ------- DAYAHEAD modules
 # First order model
 pybind11_add_module(
   switching_times_1st
@@ -61,7 +61,7 @@ pybind11_add_module(
   src/switching-times-ice-tank-3rdorder.cpp)
 target_link_libraries(switching_times_3rd PRIVATE ipopt)
 
-# ------- RK modules
+# ------- COMBINED modules
 
 # First order model
 pybind11_add_module(

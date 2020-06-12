@@ -156,18 +156,6 @@ namespace SwitchingTimes {
             for(int k = 0; k < 48; ++k) { p_dynamic_x0_diff(48 + k) = p_dynamic_x0_diff(k) - p_dynamic_x0(48 + k); };
 
 
-            //vector<scalar> _dap = vector<scalar>::Zero(48);
-            //for(int k = 0; k < 48; ++k) { _dap(k) = _p_dynamic(k); };
-
-            //vector<scalar> _rk = vector<scalar>::Zero(48);
-            //for(int k = 0; k < 48; ++k) { _rk(k) = _p_dynamic(48 + k); };
-
-            //vector<scalar> _diff = vector<scalar>::Zero(48);
-            //for(int k = 0; k < 48; ++k) { _diff(k) = _dap(k) - _rk(k); };
-
-            //vector<scalar> dat = vector<scalar>::Zero(49);
-            //for(int k = 0; k < 49; ++k) { dat(k) = _p_dynamic(48 + 48 + k); };
-
              // Derive the two switching time paths
             size_t n_s = p_opt.size() / 2; // Here n_s is the total number of swithes in each
             vector<scalar> p_opt_dap = vector<scalar>::Zero(n_s);
@@ -177,12 +165,6 @@ namespace SwitchingTimes {
             for(int k = 0; k < n_s; ++k) { p_opt_rk(k) = p_opt(n_s + k); };
 
 
-            //double total_int_time = _tf - _t0;
-
-            //double _t0_sub = _t0;
-            //double _tf_sub = _tf/1.;
-
-            //for(int k = 0; k < 1; ++k) {
             x_dap(nx-1) = 0.;
             x_rk(nx-1) = 0.;
             x_dap(nx-2) = 0.;
@@ -202,20 +184,10 @@ namespace SwitchingTimes {
                                         [&] (const vector<scalar> &x_rk , vector<scalar> &dxdt , const double t) {
                                             model(x_rk, dxdt, t, p_dynamic_x0, p_opt_rk, _p_const);
                                         }, x_rk, _t0, _tf, _dt);
-                                        
 
-            //_t0_sub += total_int_time/1.;
-            //_tf_sub += total_int_time/1.;
-
-            
-
-            //total_price(0) += (x_dap(nx-1) * dap(k)) + (x_rk(nx-1) - x_dap(nx-1)) * rk(k);
-            total_price(0) += x_dap(nx-1) + x_rk(nx-1) + 1e-2*(x_rk(nx-2) - x_dap(nx-2))*(x_rk(nx-2) - x_dap(nx-2));// + 1e-8 * (x_rk(nx-1) * x_rk(nx-1)); // Add the promised price and balance price
-
-
-            //}
+            total_price(0) += x_dap(nx-1) + x_rk(nx-1) + 1e-2*(x_rk(nx-2) - x_dap(nx-2))*(x_rk(nx-2) - x_dap(nx-2));
                                            
-            return total_price(0); //total_spot_price(0); //objective(x, p_dynamic_x0, p_opt, _p_const);
+            return total_price(0); 
         };
         // Overloading -> used in IPOPT function
         double objective_wrapper(const vector<double> &p_opt) {
@@ -235,18 +207,6 @@ namespace SwitchingTimes {
 
             vector<double>  total_price = vector<double> ::Zero(1);
 
-            //vector<double> _dap = vector<double>::Zero(48);
-            //for(int k = 0; k < 48; ++k) { _dap(k) = _p_dynamic(k); };
-
-            //vector<double> _rk = vector<double>::Zero(48);
-            //for(int k = 0; k < 48; ++k) { _rk(k) = _p_dynamic(48 + k); };
-
-            //vector<double> _diff = vector<double>::Zero(48);
-            //for(int k = 0; k < 48; ++k) { _diff(k) = dap(k) -  rk(k); };
-
-            //vector<double> dat = vector<double>::Zero(49);
-            //for(int k = 0; k < 49; ++k) { dat(k) = _p_dynamic(48 + 48 + k); };
-
             // Derive the two switching time paths
             size_t n_s_in_each = p_opt.size() / 2;
 
@@ -255,11 +215,6 @@ namespace SwitchingTimes {
 
             vector<double> p_opt_rk = vector<double>::Zero(n_s_in_each);
             for(int k = 0; k < n_s_in_each; ++k) { p_opt_rk(k) = p_opt(n_s_in_each + k); };
-
-            //double total_int_time = _tf - _t0;
-            //double _t0_sub = _t0;
-            //double _tf_sub = _tf/1.;
-            
             
             //for(int k = 0; k < 1; ++k) {
             x_dap(nx-1) = 0.;
@@ -282,15 +237,10 @@ namespace SwitchingTimes {
                                             model(x_rk, dxdt, t, _p_dynamic, p_opt_rk, _p_const);
                                         }, x_rk, _t0, _tf, _dt); 
                                         
-
-            //_t0_sub += total_int_time/1.;
-            //_tf_sub += total_int_time/1.;
-
-            //total_price(0) += (x_dap(nx-1) * dap(k)) + (x_rk(nx-1) - x_dap(nx-1)) * rk(k);
             total_price(0) += x_dap(nx-1) + x_rk(nx-1) + 1e-2*(x_rk(nx-2) - x_dap(nx-2))*(x_rk(nx-2) - x_dap(nx-2));// + 1e-8 * (x_rk(nx-1) * x_rk(nx-1)); // Add the promised price and balance price
             //}
 
-            return total_price(0); //total_spot_price(0); //objective(x, p_dynamic_x0, p_opt, _p_const);
+            return total_price(0); 
         };
         // Jacobian function wrapper
         vector<double> jacobian(const vector<double> &p_opt) {
@@ -333,7 +283,7 @@ namespace SwitchingTimes {
             int n_s = _p_opt.size()/4;
             n = _p_opt.size();
             m = 2 * (n_s + n_s - 1)   + 2;
-            nnz_jac_g = 2*2 * (n_s + n_s - 1)   + 2 * n_s + 2 * n_s; //2 * (m-1) + n; // Plus n for the max melt constraint
+            nnz_jac_g = 2*2 * (n_s + n_s - 1)   + 2 * n_s + 2 * n_s; 
             nnz_h_lag = 0;
             index_style = TNLP::C_STYLE;
             return true;
@@ -453,12 +403,12 @@ namespace SwitchingTimes {
             // Max Melt
             g[_p_opt.size() - 2]  = 0.;
             for(int k = 0; k < n_s; ++k) {
-                g[_p_opt.size() - 2] = g[_p_opt.size() - 2] + x[n_s + k] - x[k] ; //+ x[6] - x[1] + x[7] - x[2] + x[8] - x[3] + x[9] - x[4];
+                g[_p_opt.size() - 2] = g[_p_opt.size() - 2] + x[n_s + k] - x[k]; 
             }
 
             g[_p_opt.size() - 1]  = 0.;
             for(int k = 0; k < n_s; ++k) {
-                g[_p_opt.size() - 1] = g[_p_opt.size() - 1] + x[off_set_in_variables + n_s + k] - x[off_set_in_variables + k] ; //+ x[6] - x[1] + x[7] - x[2] + x[8] - x[3] + x[9] - x[4];
+                g[_p_opt.size() - 1] = g[_p_opt.size() - 1] + x[off_set_in_variables + n_s + k] - x[off_set_in_variables + k];
             }
 
             return true;
@@ -510,10 +460,7 @@ namespace SwitchingTimes {
                     iRow[_count] = off_set + n_s + k; jCol[_count] = off_set_in_variables + n_s + k;
                     _count += 1;
                 };
-                
-                
 
-                
                 // Max melt - Block 1
                 for(int k = 0; k < 2*n_s; ++k) {
                     iRow[_count] = _p_opt.size()-2; jCol[_count] = k;
@@ -525,24 +472,6 @@ namespace SwitchingTimes {
                     iRow[_count] = _p_opt.size()-1; jCol[_count] = 2*n_s + k;
                     _count += 1;
                 };
-                
-                
-
-                // Max melt
-                /*
-                iRow[18] = 9; jCol[18] = 0;
-                iRow[19] = 9; jCol[19] = 1;
-                iRow[20] = 9; jCol[20] = 2;
-                iRow[21] = 9; jCol[21] = 3;
-                iRow[22] = 9; jCol[22] = 4;
-                iRow[23] = 9; jCol[23] = 5;
-                iRow[24] = 9; jCol[24] = 6;
-                iRow[25] = 9; jCol[25] = 7;
-                iRow[26] = 9; jCol[26] = 8;
-                iRow[27] = 9; jCol[27] = 9;
-                */
-               
-
                 
             }
             else
@@ -599,38 +528,7 @@ namespace SwitchingTimes {
                     values[_count] = 1;
                     _count += 1;
                 };
-                
-                
-
-
-                
-                
-
-                // Max melt 
-                /*               
-                values[18] = -1;
-                values[19] = -1;
-                values[20] = -1;
-                values[21] = -1;
-                values[22] = -1;
-                values[23] = 1;
-                values[24] = 1;
-                values[25] = 1;
-                values[26] = 1;
-                values[27] = 1;
-                */
-
-                /*
-                for(int k = 0; k < _tmp; ++k) {
-                    values[_count] = -1;
-                    _count += 1;
-                };
-                for(int k = 0; k < _tmp; ++k) {
-                    values[_count] = 1;
-                    _count += 1;
-                };
-                */
-                
+         
             };
             return true;
         };
@@ -720,7 +618,6 @@ namespace SwitchingTimes {
             
             // Solve NLP
             (*plant)._status_solve = (int) app->OptimizeTNLP(plant);
-            //(*plant)._status_solve = 999999;
         };
     };
 }

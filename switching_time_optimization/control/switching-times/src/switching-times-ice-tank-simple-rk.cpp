@@ -53,12 +53,6 @@ namespace SwitchingTimes {
     template <typename scalar>
     scalar Plant::objective(const vector<scalar> &x,
             const vector<scalar> &p_dynamic, const vector<scalar> &p_opt, const vector<double> &p_const) {
-
-        //size_t n_opt = p_opt.size() / 2;
-        //Eigen::Map<const vector<scalar>> on(p_opt.data(), n_opt);
-        //Eigen::Map<const vector<scalar>> off(p_opt.data() + n_opt, n_opt);
-
-        
         
         return (x(1));
     };
